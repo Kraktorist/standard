@@ -1,5 +1,7 @@
 ## Task 1
 
-![IT Landscape](./IT-Landscape.svg)
+- IT Landscape  
+    ![IT Landscape](./IT-Landscape.svg)
 
-![Integrations](Integration.svg)
+- Integrations  
+    ![Integrations](Integration.svg)
