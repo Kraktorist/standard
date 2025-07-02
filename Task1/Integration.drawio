@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="27.2.0">
   <diagram name="Page-1" id="2YBvvXClWsGukQMizWep">
-    <mxGraphModel dx="1723" dy="1593" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2087" dy="1798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -142,6 +142,17 @@
             <mxPoint x="9" y="-3" as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="IhIsR1QIYRkQV1s-NoY3-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.17;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeWidth=5;fillColor=#60a917;strokeColor=light-dark(#2D7600,#660000);" edge="1" parent="1" source="wWNHtJIBtszE9w1KMmxF-16" target="IhIsR1QIYRkQV1s-NoY3-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IhIsR1QIYRkQV1s-NoY3-34" value="расчет ставок" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="IhIsR1QIYRkQV1s-NoY3-33">
+          <mxGeometry x="0.3453" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IhIsR1QIYRkQV1s-NoY3-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.83;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;strokeWidth=5;strokeColor=#006EAF;fillColor=#1ba1e2;" edge="1" parent="1" source="wWNHtJIBtszE9w1KMmxF-16" target="IhIsR1QIYRkQV1s-NoY3-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="wWNHtJIBtszE9w1KMmxF-16" value="&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;Управление&lt;br&gt;обслуживанием&lt;br&gt;&amp;nbsp;кредитных&lt;br&gt;&amp;nbsp;продуктов&lt;/span&gt;" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.users.user;fontSize=17;fontStyle=1;points=[[0,0.17,0,0,0],[0,0.33,0,0,0],[0,0.5,0,0,0],[0,0.67,0,0,0],[0,0.83,0,0,0],[0.17,0,0,0,0],[0.17,1,0,0,0],[0.33,0,0,0,0],[0.33,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.67,0,0,0,0],[0.67,1,0,0,0],[0.83,0,0,0,0],[0.83,1,0,0,0],[1,0.17,0,0,0],[1,0.33,0,0,0],[1,0.5,0,0,0],[1,0.67,0,0,0],[1,0.83,0,0,0]];" parent="1" vertex="1">
           <mxGeometry x="740" y="549" width="46" height="50" as="geometry" />
         </mxCell>
@@ -222,6 +233,9 @@
         </mxCell>
         <mxCell id="wWNHtJIBtszE9w1KMmxF-7" value="email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#D80073,#CCFFE6);fontColor=#ffffff;strokeColor=light-dark(#A50040,#333333);opacity=40;fontSize=18;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="590" y="540" width="109" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="IhIsR1QIYRkQV1s-NoY3-32" value="excel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#D80073,#CCFFE6);fontColor=#ffffff;strokeColor=light-dark(#A50040,#333333);opacity=40;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="708" y="780" width="110" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
