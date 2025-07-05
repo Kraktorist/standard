@@ -1,0 +1,27 @@
+@startuml context
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+'top to bottom direction
+
+Person(customer, "Клиент", "Клиент банка")
+Person(boDeposite, "Сотрудник", "УО депозитных продуктов")
+System_Boundary(Bank, "Bank Standard") {
+  System_Boundary(website, "Веб сайт") {
+    Container(depositeForm, "Выбор депозита", "Форма")
+  }
+  System_Boundary(abs, "АБС") {
+    Container(depositeModule, " Модуль расчета ставок депозита")
+  }
+  Container(sms, "SMS", "SMS-шлюз")
+}
+
+
+
+Rel_(customer, depositeForm, "Выбор депозита", "-DOWN->")
+Rel_(boDeposite, depositeModule, "Обработка заявок", "-UP->")
+Rel_(depositeForm, depositeModule, "Регистрация заявки","-RIGHT->")
+Rel_(depositeModule, depositeForm, "Публикация ставок","-LEFT->")
+Rel_(depositeModule, sms, "Информирование клиента","-RIGHT->")
+Rel_(sms, customer, "Подтверждение заявки","-UP->")
+@enduml
+
