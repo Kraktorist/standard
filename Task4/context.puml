@@ -1,0 +1,45 @@
+@startuml context
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+'top to bottom direction
+
+Person(customer, "Клиент", "Клиент банка")
+Person(ccOperator, "Оператор", "Call Center")
+Person(boDeposit, "Сотрудник", "УО депозитных продуктов")
+Person(boCredit, "Сотрудник", "УО кредитных продуктов")
+System_Boundary(Bank, "Bank Standard") {
+
+    Container(sms, "SMS", "SMS-шлюз")
+    Container(queue, "Kafka", "Queue")
+
+  System_Boundary(website, "Онлайн банк") {
+    Container(depositeAPI, "Backend", "API")
+    Container(depositeForm, "Выбор депозита", "Форма")
+  }
+  System_Boundary(abs, "АБС") {
+    Container(depositeModule, "Модуль расчета ставок депозита")
+    Container(customerModule, "Модуль расчета клиентских ставок")
+  }
+}
+
+System_Boundary(callCenter, "Call Center") {
+  Container(crmCC, "Call Center", "CRM")
+  Container(storageCC, "Файловое хранилище", "CRM")
+}
+
+
+Rel_(ccOperator, crmCC, "Информация по условиям", "-DOWN->")
+Rel_(depositeModule, storageCC, "Экспорт условий депозитов","-UP->")
+Rel_(crmCC, storageCC, "Импорт условий депозитов","-RIGHT->")
+
+Rel_(customer, depositeForm, "Выбор депозита", "-DOWN->")
+Rel_(sms, customer, "Подтверждение заявки","-UP->")
+
+Rel_(depositeForm, depositeAPI, "Заявка", "-DOWN->")
+Rel_(boCredit, depositeModule, "Расчет ставок", "-UP->")
+Rel_(boDeposit, customerModule, "Обработка заявок", "-UP->")
+Rel_(depositeModule, depositeAPI, "Публикация условий депозитов","-UP->")
+Rel_(depositeAPI, queue, "Заявка клиента","-RIGHT->")
+Rel_(queue, customerModule, "Заявка клиента","-LEFT->")
+Rel_(customerModule, sms, "Информирование клиента","-UP->")
+@enduml
