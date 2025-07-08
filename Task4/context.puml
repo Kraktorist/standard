@@ -20,6 +20,7 @@ System_Boundary(Bank, "Bank Standard") {
   System_Boundary(abs, "АБС") {
     Container(depositeModule, "Модуль расчета ставок депозита")
     Container(customerModule, "Модуль расчета клиентских ставок")
+    Container(customerModuleCache, "Кэш")
   }
 }
 
@@ -33,7 +34,8 @@ System_Boundary(callCenter, "Call Center") {
 }
 
 Rel_(ccOperator, crmCC, "Информация по условиям", "-DOWN->")
-Rel_(crmCC, depositeModule, "API", "-DOWN->")
+Rel_(crmCC, customerModuleCache, "API", "-DOWN->")
+Rel_(customerModuleCache, customerModule, "API", "-LEFT->")
 
 Rel_(pccOperator, pcrmCC, "Информация по условиям", "-DOWN->")
 Rel_(depositeModule, storageCC, "Экспорт условий депозитов","-UP->")

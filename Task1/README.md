@@ -1,7 +1,7 @@
 ## Task 1
 
-- IT Landscape  
+- Карта ИТ-ландшафта  
     ![IT Landscape](./IT-Landscape.svg)
 
-- Integrations  
+- Схема интеграций  
     ![Integrations](Integration.svg)
