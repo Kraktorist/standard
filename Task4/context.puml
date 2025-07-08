@@ -5,6 +5,7 @@
 
 Person(customer, "Клиент", "Клиент банка")
 Person(ccOperator, "Оператор", "Call Center")
+Person(pccOperator, "Оператор", "Partner Call Center")
 Person(boDeposit, "Сотрудник", "УО депозитных продуктов")
 Person(boCredit, "Сотрудник", "УО кредитных продуктов")
 System_Boundary(Bank, "Bank Standard") {
@@ -22,15 +23,21 @@ System_Boundary(Bank, "Bank Standard") {
   }
 }
 
-System_Boundary(callCenter, "Call Center") {
-  Container(crmCC, "Call Center", "CRM")
+System_Boundary(pcallCenter, "Partner Call Center") {
+  Container(pcrmCC, "Call Center", "CRM")
   Container(storageCC, "Файловое хранилище", "CRM")
 }
 
+System_Boundary(callCenter, "Call Center") {
+  Container(crmCC, "Call Center", "CRM")
+}
 
 Rel_(ccOperator, crmCC, "Информация по условиям", "-DOWN->")
+Rel_(crmCC, depositeModule, "API", "-DOWN->")
+
+Rel_(pccOperator, pcrmCC, "Информация по условиям", "-DOWN->")
 Rel_(depositeModule, storageCC, "Экспорт условий депозитов","-UP->")
-Rel_(crmCC, storageCC, "Импорт условий депозитов","-RIGHT->")
+Rel_(pcrmCC, storageCC, "Импорт условий депозитов","-RIGHT->")
 
 Rel_(customer, depositeForm, "Выбор депозита", "-DOWN->")
 Rel_(sms, customer, "Подтверждение заявки","-UP->")
