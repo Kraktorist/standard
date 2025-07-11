@@ -1,0 +1,41 @@
+@startuml context
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+'top to bottom direction
+
+Person(customer, "Клиент", "Клиент банка")
+Person(boDeposit, "Сотрудник", "УО депозитных продуктов")
+Person(boCredit, "Сотрудник", "УО кредитных продуктов")
+System_Boundary(Bank, "Bank Standard") {
+  System_Boundary(website, "Онлайн банк") {
+    Container(depositeAPI,"API", "ASP.NET", "HTTPS/REST API")
+    Container(depositeForm, "Web Interface", "ASP.NET", "Форма заявки, список депозитов")
+    ContainerDb(websiteDB, "Site Database", "MS SQL", "База данных сайта, хранилище ставок депозитов")
+  }
+  System_Boundary(abs, "АБС", ) {
+    Container(depositeModule, "Модуль расчета ставок депозита", "Delphi,PL/SQL")
+    Container(customerModule, "Модуль расчета клиентских ставок", "Delphi,PL/SQL")
+    Container(queueClient, "Apache Kafka Adapter",  "Чтение и импорт очереди заявок")
+    ContainerDb(absDb, "База данных АБС", "PL/SQL", "Логика работы со ставками")
+  }
+  Container(sms, "SMS", "SMS-шлюз")
+  Container(queue, "Queue", Kafka, "Очередь заявок")
+}
+
+
+
+Rel(customer, depositeForm, "HTTPS")
+Rel(depositeForm, depositeAPI, "REST API")
+Rel(depositeAPI, websiteDB, "TLS/TCP")
+Rel_(boCredit, depositeModule, "Расчет ставок", "-UP->")
+Rel_(boDeposit, customerModule, "Обработка заявок", "-UP->")
+Rel_(depositeModule, depositeAPI, "HTTPS/REST API","-UP->")
+Rel_(depositeModule, absDb, "TLS/TCP","-RIGHT->")
+Rel_(depositeAPI, queue, "TLS/TCP","-LEFT->")
+Rel_(queue, queueClient, "TLS/TCP","-DOWN->")
+Rel_(queueClient, absDb, "TLS/TCP","-DOWN->")
+Rel_(customerModule, absDb, "TLS/TCP","-LEFT->")
+Rel_(customerModule, sms, "Информирование клиента","-UP->")
+Rel_(sms, customer, "Подтверждение заявки","-UP->")
+@enduml
+
