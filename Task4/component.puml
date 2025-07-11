@@ -1,0 +1,32 @@
+@startuml MonitoringContainerComponentDiagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+Person(boDeposit, "Сотрудник бэк-офиса")
+Person(ccOperator, "Оператор", "Call Center")
+Person(pccOperator, "Оператор", "Partner Call Center")
+
+Container(partnerCC, "Партнерский Call Центр") {
+    Component(partnerCRM, "Call Center CRM")
+    Component(partnerFTP, "SFTP Storage", "Хранилище для передачи файлов")
+}
+
+Container(callCenter, "Call Центр") {
+    Component(CRM, "Call Center CRM")
+}
+
+Container(abs, "АБС банка Стандарт") {
+      Component(depositeModule, "Модуль расчета ставок депозита")
+}
+
+
+Rel(boDeposit, depositeModule, "расчет", "ставки")
+Rel(pccOperator, partnerCRM, "читает", "ставки")
+Rel(ccOperator, CRM, "читает", "ставки")
+
+Rel(depositeModule, CRM, "загрузка", "HTTPS")
+
+Rel(partnerCRM, partnerFTP, "загрузка ставок", "SFTP")
+Rel(depositeModule, partnerFTP, "загрузка ставок", "SFTP")
+
+
+@enduml

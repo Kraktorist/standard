@@ -20,7 +20,12 @@
 
 ### <a name="_qmphm5d6rvi3"></a>**Решение**
 
-![context](./context.svg)
+- Context  
+  ![context](./context.svg)
+- Component  
+  ![component](./component.svg)
+
+
 
 ### <a name="_bjrr7veeh80c"></a>**Альтернативы**
 
